@@ -1,73 +1,61 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+const projects = [
+  {
+    name: "Learnova AI",
+    category: "AI Learning Platform",
+    tools: "MongoDB, Express.js, React.js, Node.js, JWT, Generative AI",
+    description:
+      "AI-powered learning platform with generative study assistance, automated quizzes, JWT auth, user profiles, and responsive dashboards.",
+    image: "/images/learnova.jpg",
+    link: "https://github.com/Vanshh19",
+  },
+  {
+    name: "Khana-Khazana",
+    category: "Food Delivery Platform",
+    tools: "MongoDB, Express.js, React.js, Node.js, Razorpay",
+    description:
+      "Full-stack food ordering platform with secure authentication, Razorpay payments, shopping cart, live order tracking, and admin dashboard.",
+    image: "/images/khana_khazana.jpg",
+    link: "https://github.com/Vanshh19",
+  },
+  {
+    name: "Baat-Chit",
+    category: "Real-Time Chat App",
+    tools: "MongoDB, Express.js, React.js, Node.js, Socket.io, JWT",
+    description:
+      "Real-time chat platform with Socket.io instant messaging, JWT authentication, active online status indicators, and media sharing support.",
+    image: "/images/baat_chit.jpg",
+    link: "https://github.com/Vanshh19",
+  }
+];
 
 const Work = () => {
-  useGSAP(() => {
-  let translateX: number = 0;
-
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
-
-  setTranslateX();
-
-  let timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
-  });
-
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
-
-  // Clean up (optional, good practice)
-  return () => {
-    timeline.kill();
-    ScrollTrigger.getById("work")?.kill();
-  };
-}, []);
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          Featured <span>Projects</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
 
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.name}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <h4>Overview</h4>
+                <p>{project.description}</p>
+                <h4 style={{ marginTop: "12px" }}>Tools &amp; Stack</h4>
+                <p style={{ color: "#c2a4ff" }}>{project.tools}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image={project.image} alt={project.name} link={project.link} />
             </div>
           ))}
         </div>

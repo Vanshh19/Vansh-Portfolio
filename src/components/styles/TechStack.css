@@ -1,0 +1,223 @@
+.techstack {
+  position: relative;
+  width: 100%;
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
+  padding: 30px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
+  isolation: isolate;
+
+}
+
+.techstack-title-box {
+  text-align: center;
+  z-index: 10;
+  position: relative;
+  transform: translateY(-20px);
+}
+
+.techstack-title-box h2 {
+  font-size: clamp(56px, 7vw, 88px);
+  font-weight: 500;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin: 0;
+  color: #fff;
+}
+
+
+.techstack-title-box h2 span {
+  color: var(--accentColor);
+}
+
+.techstack-subtitle {
+  color: #9c95a3;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+  margin: 8px auto 0;
+  max-width: 650px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.tech-canvas-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tech-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  cursor: grab;
+}
+
+.tech-canvas:active {
+  cursor: grabbing;
+}
+
+.tech-hint {
+  font-size: 12px;
+  color: #a69ab5;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin: 0 0 32px;
+  padding: 9px 16px;
+  border-radius: 20px;
+  background: rgba(194, 164, 255, 0.06);
+  border: 1px solid rgba(194, 164, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+}
+
+.tech-skills-matrix {
+  width: var(--cWidth);
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  z-index: 10;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+.tech-category-card {
+  background: rgba(18, 14, 24, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px 26px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-category-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(194, 164, 255, 0.35);
+  box-shadow: 0 12px 30px rgba(194, 164, 255, 0.08);
+}
+
+.tech-category-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accentColor);
+  box-shadow: 0 0 8px var(--accentColor);
+  display: inline-block;
+}
+
+.tech-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag-pill {
+  font-size: 13px;
+  color: #ddd4e6;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 13px;
+  border-radius: 8px;
+  font-weight: 400;
+  transition: all 0.25s ease;
+}
+
+.tech-category-card:hover .tech-tag-pill {
+  background: rgba(194, 164, 255, 0.08);
+  border-color: rgba(194, 164, 255, 0.2);
+  color: #fff;
+}
+
+
+@media (max-width: 768px) {
+  .tech-canvas-container {
+    height: 420px;
+  }
+}
+
+
+@media only screen and (max-width: 1100px) {
+  .tech-skills-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .techstack-title-box h2 {
+    font-size: 64px;
+  }
+
+  .tech-canvas-container {
+    height: 380px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .techstack {
+    padding: 40px 0 40px;
+  }
+
+  .techstack-title-box {
+    width: 92%;
+  }
+
+  .techstack-title-box h2 {
+    font-size: clamp(38px, 9vw, 52px);
+    letter-spacing: -1px;
+  }
+
+  .techstack-subtitle {
+    font-size: 14px;
+    padding: 0 8px;
+  }
+
+  .tech-canvas-container {
+    height: 320px;
+  }
+
+  .tech-skills-matrix {
+    width: 92%;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .tech-category-card {
+    padding: 20px;
+  }
+
+  .tech-hint {
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    margin-bottom: 24px;
+  }
+}
